@@ -91,12 +91,18 @@
 
             <div x-cloak x-show="dropdownOpen"
                 class="absolute right-0 z-10 w-48 mt-2 overflow-hidden bg-white rounded-md shadow-xl">
-                <a href="#"
+                <a href="{{ route('profile.show') }}"
                     class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white">Profile</a>
-                <a href="#"
-                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white">Products</a>
-                <a href="/login"
-                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white">Logout</a>
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+
+                    <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white"
+                        href="{{ route('logout') }}" onclick="event.preventDefault();
+                                    this.closest('form').submit();">
+                        {{ __('Log Out') }}
+                    </a>
+                </form>
+
             </div>
         </div>
     </div>
